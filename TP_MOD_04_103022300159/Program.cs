@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TP_MOD_04_103022300159;
 
-namespace Tpmod4_103022330075
+namespace TP_MOD_04_103022300159
 {
     class MainClass
     {
         static void Main()
         {
             KodePos kodePosObj = new KodePos();
-            
+            DoorMachine pintu = new DoorMachine();
 
             Console.Write("Masukkan nama kelurahan: ");
             string input = Console.ReadLine()?.Trim() ?? "";
@@ -30,7 +30,24 @@ namespace Tpmod4_103022330075
 
             Console.WriteLine("\n===== Simulasi Perubahan State Pintu =====");
 
+            string command;
+            do
+            {
+                Console.Write("\nMasukkan perintah (buka/kunci/keluar): ");
+                command = Console.ReadLine()?.Trim().ToLower() ?? "";
 
+                if (command == "buka")
+                {
+                    pintu.BukaPintu();
+                }
+                else if (command == "kunci")
+                {
+                    pintu.KunciPintu();
+                }
+
+            } while (command != "keluar");
+
+            Console.WriteLine("Program selesai.");
         }
     }
 }
